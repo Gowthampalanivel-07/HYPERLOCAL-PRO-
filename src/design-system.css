@@ -1,0 +1,234 @@
+/* 🎨✨ HYPERLOCAL PRO - WHITE & GREY LIQUID GLASS PALETTE */
+
+:root {
+  /* 🤍 BASE COLORS - PRIMARY BACKGROUNDS (Deep Greys) */
+  --color-bg-primary: #1A1A1A;
+  --color-bg-secondary: #252525;
+  --color-surface: #2A2A2A;
+  --color-card: #323232;
+
+  /* 🤍 GREY COLOR SCALE - UI HIERARCHY */
+  --color-grey-light: #E0E0E0;
+  --color-grey-medium: #B0B0B0;
+  --color-grey-soft: #808080;
+  --color-grey-dark: #505050;
+
+  /* 🔤 TEXT COLORS */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #D0D0D0;
+  --color-text-disabled: #A0A0A0;
+
+  /* 💧 GLASS EFFECT - MAIN GLASS STYLE (Ultra Transparent Mirror) */
+  /* Use for: cards, popups, bottom sheets */
+  --glass-main-bg: rgba(255, 255, 255, 0.04);
+  --glass-main-blur: 40px;
+  --glass-main-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-main-radius: 20px;
+  --glass-main-shadow: 0 8px 32px rgba(100, 100, 100, 0.06);
+
+  /* 🤍 GLASS EFFECT - ELEVATED GLASS (Important Elements - More Transparent) */
+  --glass-elevated-bg: rgba(255, 255, 255, 0.06);
+  --glass-elevated-blur: 50px;
+  --glass-elevated-border: 1px solid rgba(255, 255, 255, 0.15);
+  --glass-elevated-shadow: 0 20px 60px rgba(100, 100, 100, 0.12);
+
+  /* 🧊 GLASS EFFECT - SOFT GLASS (Nearly Invisible Emphasis) */
+  --glass-soft-bg: rgba(255, 255, 255, 0.03);
+  --glass-soft-blur: 30px;
+  --glass-soft-border: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* ✨ EFFECTS */
+  --glow-subtle: 0 0 30px rgba(255, 255, 255, 0.2);
+  --transition-smooth: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* 🔤 FONTS */
+  --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* 🌊 DEPTH LAYERS */
+  --z-base: 0;
+  --z-surface: 10;
+  --z-card: 20;
+  --z-modal: 100;
+  --z-tooltip: 110;
+
+  /* 🔤 TEXT SHADOWS - SUBTLE DEPTH FOR LIGHT TEXT */
+  --text-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --text-shadow-md: 0 2px 6px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --text-shadow-lg: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* 🎨 GLASS MIXINS - REUSABLE GLASS EFFECTS */
+
+/* Main Glass - Cards, Popups, Bottom Sheets */
+.glass-main {
+  background: var(--glass-main-bg);
+  backdrop-filter: blur(var(--glass-main-blur)) saturate(1.8);
+  -webkit-backdrop-filter: blur(var(--glass-main-blur)) saturate(1.8);
+  border-radius: var(--glass-main-radius);
+  border: var(--glass-main-border);
+  box-shadow: var(--glass-main-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Elevated Glass - Important Elements */
+.glass-elevated {
+  background: var(--glass-elevated-bg);
+  backdrop-filter: blur(var(--glass-elevated-blur)) saturate(2);
+  -webkit-backdrop-filter: blur(var(--glass-elevated-blur)) saturate(2);
+  border: var(--glass-elevated-border);
+  box-shadow: var(--glass-elevated-shadow), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  border-radius: var(--glass-main-radius);
+}
+
+/* Soft Glass - Subtle UI Elements */
+.glass-soft {
+  background: var(--glass-soft-bg);
+  backdrop-filter: blur(var(--glass-soft-blur)) saturate(1.6);
+  -webkit-backdrop-filter: blur(var(--glass-soft-blur)) saturate(1.6);
+  border: var(--glass-soft-border);
+  border-radius: var(--glass-main-radius);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* 🔘 BUTTON STYLES */
+
+/* Primary Button */
+.btn-primary {
+  background: var(--glass-main-bg);
+  backdrop-filter: blur(calc(var(--glass-main-blur) + 5px)) saturate(1.8);
+  -webkit-backdrop-filter: blur(calc(var(--glass-main-blur) + 5px)) saturate(1.8);
+  color: #FFFFFF;
+  border: var(--glass-main-border);
+  border-radius: var(--glass-main-radius);
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: var(--glass-main-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.btn-primary:hover {
+  background: var(--glass-elevated-bg);
+  box-shadow: var(--glass-elevated-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-grey-medium);
+  border-radius: var(--glass-main-radius);
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  border-color: #FF6B9D;
+  background: rgba(255, 107, 157, 0.1);
+}
+
+/* 📦 CARD STYLE - ULTRA TRANSPARENT MIRROR GLASS */
+.card {
+  background: var(--glass-main-bg);
+  backdrop-filter: blur(var(--glass-main-blur)) saturate(1.8);
+  -webkit-backdrop-filter: blur(var(--glass-main-blur)) saturate(1.8);
+  border: var(--glass-main-border);
+  border-radius: var(--glass-main-radius);
+  padding: 24px;
+  box-shadow: var(--glass-main-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: var(--transition-smooth);
+}
+
+.card:hover {
+  background: var(--glass-elevated-bg);
+  box-shadow: var(--glass-elevated-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-4px);
+}
+
+/* 📱 BOTTOM NAVIGATION */
+.bottom-nav {
+  background: var(--glass-main-bg);
+  backdrop-filter: blur(var(--glass-main-blur));
+  -webkit-backdrop-filter: blur(var(--glass-main-blur));
+  border: var(--glass-main-border);
+  border-top: var(--glass-main-border);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottom-nav-item {
+  color: var(--color-grey-soft);
+  transition: var(--transition-smooth);
+}
+
+.bottom-nav-item.active {
+  color: #FFFFFF;
+}
+
+/* 🌊 DEPTH LAYERS */
+.bg-primary {
+  background-color: var(--color-bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-card {
+  background-color: var(--color-card);
+}
+
+/* 🔤 TEXT UTILITIES */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-disabled {
+  color: var(--color-text-disabled);
+}
+
+/* 🔤 TYPOGRAPHY */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+/* ✨ SMOOTH TRANSITIONS ON ALL INTERACTIVE ELEMENTS */
+button,
+a,
+input,
+select,
+textarea {
+  transition: var(--transition-smooth);
+}
+
+/* 🎯 ACCESSIBILITY & CONTRAST */
+input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+/* 💧 SUBTLE GLOW FOR INTERACTIVE ELEMENTS */
+button:focus,
+a:focus,
+input:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
